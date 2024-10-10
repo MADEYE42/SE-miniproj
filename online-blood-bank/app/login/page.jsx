@@ -20,9 +20,11 @@ const LoginPage = () => {
 
     if (response.ok) {
       const data = await response.json();
-      // Handle successful login (e.g., store user info, redirect, etc.)
-      console.log(data);
-      router.push('/dashboard'); // Redirect to dashboard or another page
+      // Assume data contains the user object including the ID
+      const userId = data.id; // Make sure your login API returns the user ID
+
+      // Redirect to the donor page using the actual user ID
+      router.push(`/donor/${userId}`);
     } else {
       // Handle error
       console.error('Login failed');

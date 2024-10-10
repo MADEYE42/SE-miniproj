@@ -4,5 +4,17 @@
     "email": "gmadye13@gmail.com",
     "role": "Donor",
     "password": "123456"
+  },
+  {
+    "name": "Gouresh Madye",
+    "email": "gmadye12@gmail.com",
+    "role": "Donor",
+    "password": "1234567"
+  },
+  {
+    "name": "Gouresh",
+    "email": "g@gmail.com",
+    "role": "Donor",
+    "password": "12345"
   }
 ]
