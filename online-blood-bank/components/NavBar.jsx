@@ -6,6 +6,7 @@ const NavBar = () => {
     <nav className="bg-gray-800 p-4 text-white w-full flex justify-between">
       <div>
         <Link href="/">
+        
           <span className="text-xl cursor-pointer">Online Blood Bank</span>
         </Link>
       </div>

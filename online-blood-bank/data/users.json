@@ -16,5 +16,11 @@
     "email": "g@gmail.com",
     "role": "Donor",
     "password": "12345"
+  },
+  {
+    "name": "Harshita ",
+    "email": "harshita@123",
+    "role": "Donor",
+    "password": "12345"
   }
 ]
