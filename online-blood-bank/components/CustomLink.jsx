@@ -1,6 +1,5 @@
-"use client"
-// components/CustomLink.jsx
-import { useRouter } from 'next/router';
+"use client"; // Ensure this is a client component
+import { useRouter } from 'next/navigation';
 import PropTypes from 'prop-types';
 
 const CustomLink = ({ href, className, children }) => {

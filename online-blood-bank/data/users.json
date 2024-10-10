@@ -1,27 +1,8 @@
 [
-    {
-      "id": 1,
-      "username": "donor1",
-      "password": "password1",
-      "role": "Donor"
-    },
-    {
-      "id": 2,
-      "username": "patient1",
-      "password": "password2",
-      "role": "Patient"
-    },
-    {
-      "id": 3,
-      "username": "admin1",
-      "password": "password3",
-      "role": "Admin"
-    },
-    {
-      "id": 4,
-      "username": "hospital1",
-      "password": "password4",
-      "role": "Hospital"
-    }
-  ]
-  
+  {
+    "name": "Gouresh Madye",
+    "email": "gmadye13@gmail.com",
+    "role": "Donor",
+    "password": "123456"
+  }
+]

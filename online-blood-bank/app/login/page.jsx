@@ -1,51 +1,60 @@
-"use client"
+"use client"; // Ensure this is a client component
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import users from '@/data/users.json';
-import NavBar from '@/components/NavBar';
-import Link from 'next/link';
 
-export default function Login() {
+const LoginPage = () => {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter();
 
-  const handleLogin = () => {
-    const user = users.find(u => u.email === email && u.password === password);
-    if (user) {
-      if (user.role === 'Donor') {
-        router.push(`/donor/${user.id}`);
-      } else if (user.role === 'Admin') {
-        router.push(`/admin/${user.id}`);
-      } else if (user.role === 'Hospital') {
-        router.push(`/hospital/${user.id}`);
-      } else {
-        router.push(`/patient/${user.id}`);
-      }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      // Handle successful login (e.g., store user info, redirect, etc.)
+      console.log(data);
+      router.push('/dashboard'); // Redirect to dashboard or another page
     } else {
-      alert('Invalid credentials');
+      // Handle error
+      console.error('Login failed');
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
-      <NavBar />
-      <h1 className="text-2xl mb-4">Login</h1>
-      <input
-        type="email"
-        placeholder="Email"
-        className="mb-2 p-2 border"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        className="mb-2 p-2 border"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin} className="bg-blue-500 text-white p-2">Login</button>
+      <h1 className="text-2xl font-bold">Login</h1>
+      <form onSubmit={handleSubmit} className="mt-4">
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          className="border p-2 mb-2"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          className="border p-2 mb-2"
+        />
+        <button type="submit" className="bg-blue-600 text-white py-2 px-4 rounded">
+          Login
+        </button>
+      </form>
     </div>
   );
-}
+};
+
+export default LoginPage;
