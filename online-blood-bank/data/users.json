@@ -22,5 +22,11 @@
     "email": "harshita@123",
     "role": "Donor",
     "password": "12345"
+  },
+  {
+    "name": "Gouresh Madye ",
+    "email": "gmadye13@gmail.co",
+    "role": "Donor",
+    "password": "123456"
   }
 ]
