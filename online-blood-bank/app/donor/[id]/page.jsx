@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import users from '@/data/users.json'; // Assuming this is where you have your user data
 import NavBar from '@/components/NavBar';
-import { saveAs } from 'file-saver'; // Make sure to install file-saver: npm install file-saver
+import Footer from '@/components/Footer';
 
 const DonorPage = ({ params }) => {
   const router = useRouter();
@@ -44,48 +44,72 @@ const DonorPage = ({ params }) => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center">
+    <div>
+    <div className="min-h-screen flex flex-col items-center bg-gray-100">
       <NavBar />
-      <h1 className="text-3xl my-4">Donor Information</h1>
-      <form onSubmit={handleSubmit} className="p-4 border">
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          className="border p-2 mb-2 w-full"
-        />
-        <select value={location} onChange={(e) => setLocation(e.target.value)} required className="border p-2 mb-2 w-full">
-          <option value="">Select Location</option>
-          {locations.map((loc, index) => (
-            <option key={index} value={loc}>{loc}</option>
-          ))}
-        </select>
-        <select value={hospital} onChange={(e) => setHospital(e.target.value)} required className="border p-2 mb-2 w-full">
-          <option value="">Select Hospital</option>
-          {hospitals.map((hos, index) => (
-            <option key={index} value={hos}>{hos}</option>
-          ))}
-        </select>
-        <select value={bloodGroup} onChange={(e) => setBloodGroup(e.target.value)} required className="border p-2 mb-2 w-full">
-          <option value="">Select Blood Group</option>
-          {bloodGroups.map((bg, index) => (
-            <option key={index} value={bg}>{bg}</option>
-          ))}
-        </select>
-        <label className="block mb-2">Appointment Time:</label>
-        <input
-          type="time"
-          value={appointmentTime}
-          onChange={(e) => setAppointmentTime(e.target.value)}
-          required
-          className="border p-2 mb-2 w-full"
-        />
-        <button type="submit" className="bg-blue-600 text-white py-2 px-4 rounded">
-          Request Appointment
-        </button>
-      </form>
+      <div className="w-full max-w-lg bg-white rounded-lg shadow-lg p-8 mt-8">
+        <h1 className="text-4xl font-bold text-red-900 text-center mb-8">Request an Appointment</h1>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            className="w-full border border-gray-300 p-3 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-red-900"
+          />
+          <select
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            required
+            className="w-full border border-gray-300 p-3 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-red-900"
+          >
+            <option value="">Select Location</option>
+            {locations.map((loc, index) => (
+              <option key={index} value={loc}>{loc}</option>
+            ))}
+          </select>
+          <select
+            value={hospital}
+            onChange={(e) => setHospital(e.target.value)}
+            required
+            className="w-full border border-gray-300 p-3 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-red-900"
+          >
+            <option value="">Select Hospital</option>
+            {hospitals.map((hos, index) => (
+              <option key={index} value={hos}>{hos}</option>
+            ))}
+          </select>
+          <select
+            value={bloodGroup}
+            onChange={(e) => setBloodGroup(e.target.value)}
+            required
+            className="w-full border border-gray-300 p-3 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-red-900"
+          >
+            <option value="">Select Blood Group</option>
+            {bloodGroups.map((bg, index) => (
+              <option key={index} value={bg}>{bg}</option>
+            ))}
+          </select>
+          <label className="block text-lg font-semibold text-gray-700">Appointment Time:</label>
+          <input
+            type="time"
+            value={appointmentTime}
+            onChange={(e) => setAppointmentTime(e.target.value)}
+            required
+            className="w-full border border-gray-300 p-3 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-red-900"
+          />
+          <button
+            type="submit"
+            className="w-full bg-red-900 text-white py-3 px-6 rounded-md text-lg font-semibold hover:bg-yellow-500 transition duration-300 ease-in-out"
+          >
+            Request Appointment
+          </button>
+        </form>
+      </div>
+      
+    </div>
+    <Footer/>
     </div>
   );
 };
